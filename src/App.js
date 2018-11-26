@@ -17,17 +17,20 @@ class App extends React.Component {
     async getData() {
         const response = await fetch('http://api.open-notify.org/astros.json')
         const spacePeople = await response.json()
+        console.log(spacePeople)
         this.setState({ spacePeople })
     }
 
     render() {
         return (
             <div>
+                {this.state.spacePeople.map((person, id) => <h1 key={id}>{person.name}</h1>)}
                 <Greeting />
                 <ExampleComponent />
                 <Button />
             </div>
-        )}
+        )
+    }
 
 }
 
